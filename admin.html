@@ -28,6 +28,8 @@
     </style>
 </head>
 <body>
+    <h2>Fleet Management App</h2>
+    <button onclick="window.location.href='index.html'">Back</button>
     <div id="sidebar">
         <input type="text" id="reg-no" placeholder="Reg No of Vehicle">
         <select id="category">
@@ -73,7 +75,7 @@
         <p><b>Category: </b> ${category}</p>
         <p class="driver"><b>Driver: </b> ${driver}</p>
         <p class="status"><b>Available: </b> ${available}</p>
-        <button class="update-btn">Update Driver"</button>
+        <button class="update-btn">Update Driver</button>
         <button class="avail-btn">Change Availability</button>
         <button class="delete-btn">Delete Vehicle</button>
         `;
@@ -88,7 +90,7 @@
         const current = status.textContent.includes("Yes")?"No":"Yes";
         status.innerHTML = `<b>Available:</b>${current}`;
     });
-    card.querySelector("delete-btn").addEventListener("click",()=>{
+    card.querySelector(".delete-btn").addEventListener("click",()=>{
         card.remove();
     });
     container.appendChild(card);
