@@ -4,11 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        div{
+            background-color: rgb(240, 240, 240);
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;;
+            display: flex;
+            padding: 10px;
+            gap: 10px;
+            flex-direction: column;
+            align-items: center;
+        }
+        button{
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 5px;
+        }
+    </style>
 </head>
 <body>
+    <h1>Fleet Management App</h1>
     <div>
-        <input type="email" id="mail" placeholder="Enter a valid email ID"><br><br>
-        <input type="password" id="pwd" placeholder="Enter the Password"><br><br>
+        <input type="email" id="mail" placeholder="Enter a valid email ID" size="30">
+        <input type="password" id="pwd" placeholder="Enter the Password" size="30">
         <button id="btn" onclick="login()">Login</button>
     </div>
 </body>
