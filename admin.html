@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <style>
+        .nav{
+            background-color: bisque;
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+        }
         #sidebar {
             display: flex;
             flex-direction: column;
@@ -38,6 +44,17 @@
     <h2 style="text-align: center;">Fleet Management App</h2>
     <button onclick="window.location.href='index.html'">Back</button>
     <div id="nav">
+        <select id="filter-category">
+                <option value="Auto">Auto</option>
+                <option value="Car">Car</option>
+                <option value="Bus">Bus</option>
+                <option value="Truck">Truck</option>
+        </select>
+        <select id="filter-availability">
+                <option value="Yes">Available</option>
+                <option value="No">Unavailable</option>
+        </select>
+        <button>Clear filter</button>
 
     </div>
     <div class="mainclass">
