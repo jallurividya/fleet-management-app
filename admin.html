@@ -3,9 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Admin Dashboard</title>
+    <style>
+        #sidebar{
+            display: flex;
+            flex-direction: column;
+            box-shadow: rgba(145, 143, 143, 0.24) 0px 3px 8px;
+            gap: 10px;
+            padding: 10px;
+            width: fit-content;
+        }
+        .card-container{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .card{
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+    </style>
 </head>
 <body>
+    <div id="sidebar">
+        <input type="text" id="reg-no" placeholder="Reg No of Vehicle">
+        <select id="category">
+            <option value="Auto">Auto</option>
+            <option value="Car">Car</option>
+            <option value="Bus">Bus</option>
+            <option value="Truck">Truck</option>
+        </select>
+        <input type="text" id="driver" placeholder="Driver Name">
+        <select id="available">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+        <button id="addFleet">Add Fleet</button>
+    </div>
+    <div class="main">
+    <div class="content">
+        <h2>Fleet List</h2>
+        <div id="fleetContainer" class="card-container"></div>
+    </div>
+    </div>
     
 </body>
+<script>
+    const addFleetBtn = document.getElementById("addFleet");
+    const container =document.getElementById("fleetContainer");
+    //const IMG_URL = "https://coding-platform.s3.amazonaws.com/dev/lms/tickets/5e80fcb6-3f8e-480c-945b-30a5359eb40e/JNmYjkVr3WOjsrbu.png";
+    
+    addFleetBtn.addEventListener("click", ()=>{
+        const regNo = document.getElementById("reg-no").value;
+        const category = document.getElementById("category").value;
+        const driver = document.getElementById("driver").value;
+        const available = document.getElementById("available").value;
+
+        if(!regNo || !driver){
+            alert("Registration Number and Driver Name are required!");
+            return;
+        }
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.innerHTML =`
+        <h3>${regNo}</h3>
+        <p><b>Category: </b> ${category}</p>
+        <p class="driver"><b>Driver: </b> ${driver}</p>
+        <p class="status"><b>Available: </b> ${available}</p>
+        <button class="update-btn">Update Driver"</button>
+        <button class="avail-btn">Change Availability</button>
+        <button class="delete-btn">Delete Vehicle</button>
+        `;
+    card.querySelector(".update-btn").addEventListener("click",()=>{
+        const newDriver = prompt("Enter New Driver Name");
+        if(newDriver){
+            card.querySelector(".driver").innerHTML = `<b>Driver: </b>${newDriver}`
+        }
+    });
+    card.querySelector(".avail-btn").addEventListener("click",()=>{
+        const status = card.querySelector(".status");
+        const current = status.textContent.includes("Yes")?"No":"Yes";
+        status.innerHTML = `<b>Available:</b>${current}`;
+    });
+    card.querySelector("delete-btn").addEventListener("click",()=>{
+        card.remove();
+    });
+    container.appendChild(card);
+    document.getElementById("reg-no").value="";
+    document.getElementById("driver").value="";
+});
+</script>
 </html>
